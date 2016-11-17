@@ -1,0 +1,9 @@
+#sidenav {
+  width: 342px;
+  background-color: $dark;
+
+  .md-button:hover,
+  .md-button:focus {
+    background-color: $purple;
+  }
+}

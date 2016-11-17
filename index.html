@@ -1,39 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content="">
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-        <title>TestFrontend</title>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>TestFrontend</title>
 
-        <link rel="stylesheet" href="assets/libs/bundle.css">
-    </head>
+    <link rel="stylesheet" href="assets/libs/bundle.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
 
-    <body ng-app="app" ng-cloak layout="column">
-        <!-- Content -->
-        <div flex layout="row">
-            <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
+<body ng-app="app" ng-cloak layout="column">
+<!-- Content -->
+<div flex layout="row">
+    <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp" id="sidenav">
+        <md-list flex>
+            <md-list-item class="md-clickable">
+                <button class="md-button md-accent" layout="row" flex>
+                    <span flex>Projects</span>
+                    <span flex>8</span>
+                </button>
+            </md-list-item>
+        </md-list>
 
-            </md-sidenav>
+        <md-list class="bottom">
+            <md-list-item>
+                <button class="md-button">
+                    Log out
+                </button>
+            </md-list-item>
+        </md-list>
+    </md-sidenav>
 
-            <md-content flex id="content">
-                
-            </md-content>
+    <md-content id="content" flex>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <md-button>
+                    <md-icon md-font-set="i8" md-font-icon="icons8-search"></md-icon>
+                </md-button>
+                <div flex>
+                    <md-autocomplete md-items="[]">
+
+                    </md-autocomplete>
+                </div>
+                <md-button>
+                    <md-icon md-font-set="i8" md-font-icon="icons8-more"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <div layout="row">
+            <div flex="20"></div>
+            <div flex><h4>Today</h4>
+                <md-list class="md-whiteframe-8dp">
+                    <md-list-item>
+                        <md-radio-group>
+                            <md-radio-button layout="row" layout-align="start center">
+                            </md-radio-button>
+                        </md-radio-group>
+                        <md-button ng-click="ctrl.viewTask()">Create a company</md-button>
+                    </md-list-item>
+                </md-list>
+                <h4>Friday<small>(09.06.2016)</small></h4>
+                <md-list class="md-whiteframe-8dp">
+                    <md-list-item>
+                        <md-radio-group>
+                            <md-radio-button>
+                            </md-radio-button>
+                        </md-radio-group>
+                        <md-button ng-click="ctrl.viewTask()">Call in a barber shop</md-button>
+
+
+                    </md-list-item>
+                </md-list></div>
+            <div flex="20"></div>
         </div>
-        <!-- /Content -->
+        <button class="md-fab md-fab-bottom-right md-button md-ink-ripple">
+            <md-icon md-font-set="i8" md-font-icon="icons8-plus"></md-icon>
+        </button>
+    </md-content>
 
-        <!--[if lt IE 9]>
-        <script src="bower_components/es5-shim/es5-shim.js"></script>
-        <script src="bower_components/json3/lib/json3.js"></script>
-        <![endif]-->
+    <md-sidenav class="md-whiteframe-4dp md-sidenav-right" md-component-id="tasks">
+    </md-sidenav>
 
-        <!-- Third party libs -->
-        <script src="assets/libs/bundle.js"></script>
-        <!-- /third party libs -->
+    <md-sidenav class="md-whiteframe-4dp md-sidenav-right" md-component-id="projects">
+    </md-sidenav>
 
-        <!-- The app -->
-        <script src="app/app.js"></script>
-        <!-- /app -->
-    </body>
+    <md-sidenav class="md-whiteframe-4dp md-sidenav-right" md-component-id="view-task" layout-padding>
+        <h3>Placeholder content</h3>
+        <div class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.</div>
+    </md-sidenav>
+</div>
+<!-- /Content -->
+
+<!--[if lt IE 9]>
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/json3/lib/json3.js"></script>
+<![endif]-->
+
+<!-- Third party libs -->
+<script src="assets/libs/bundle.js"></script>
+<!-- /third party libs -->
+
+<!-- The app -->
+<script src="app/app.js"></script>
+<!-- /app -->
+</body>
 </html>
