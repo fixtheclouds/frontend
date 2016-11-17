@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <title>TestFrontend</title>
+
+        <link rel="stylesheet" href="assets/libs/bundle.css">
+    </head>
+
+    <body ng-app="app" ng-cloak layout="column">
+        <!-- Content -->
+        <div flex layout="row">
+            <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
+
+            </md-sidenav>
+
+            <md-content flex id="content">
+                
+            </md-content>
+        </div>
+        <!-- /Content -->
+
+        <!--[if lt IE 9]>
+        <script src="bower_components/es5-shim/es5-shim.js"></script>
+        <script src="bower_components/json3/lib/json3.js"></script>
+        <![endif]-->
+
+        <!-- Third party libs -->
+        <script src="assets/libs/bundle.js"></script>
+        <!-- /third party libs -->
+
+        <!-- The app -->
+        <script src="app/app.js"></script>
+        <!-- /app -->
+    </body>
+</html>

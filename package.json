@@ -1,0 +1,14 @@
+{
+  "name": "test-frontend",
+  "version": "1.0.0",
+  "description": "AngularJS test app",
+  "repository": "https://github.com/unsaidxpl/test-frontend",
+  "license": "MIT",
+  "dependencies": {
+    "bower": "^1.8.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0"
+  }
+}
