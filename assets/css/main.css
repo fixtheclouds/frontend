@@ -161,13 +161,126 @@ body *, .md-button {
   text-transform: none; }
 
 body {
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  font-family: sf_ui_textregular; }
 
 #sidenav {
-  width: 342px;
-  background-color: #292c33; }
+  width: 342.5px;
+  background-color: #292c33;
+  padding: 0 30px;
+  padding-top: 4px; }
   #sidenav .md-button:hover,
   #sidenav .md-button:focus {
     background-color: #6b6b99; }
+  #sidenav md-list-item * {
+    color: #ffffff; }
+  #sidenav md-list-item span.primary {
+    text-align: left; }
+  #sidenav md-list-item span.secondary {
+    text-align: right; }
+  #sidenav .user md-list-item {
+    padding-left: 10px; }
+  #sidenav .user img.md-avatar {
+    width: 50px;
+    height: 50px;
+    border: 1px solid white;
+    padding: 4px; }
+  #sidenav .user h4 {
+    color: #ffffff;
+    font-family: sf_ui_textsemibold;
+    font-size: 15px;
+    padding-left: 4px; }
+  #sidenav .controls, #sidenav .projects {
+    padding: 0; }
+    #sidenav .controls md-list-item, #sidenav .projects md-list-item {
+      padding: 0;
+      height: 40px;
+      min-height: 40px; }
+    #sidenav .controls .md-button, #sidenav .projects .md-button {
+      line-height: 40px;
+      margin: 0;
+      min-height: 40px;
+      padding: 0 15px; }
+  #sidenav .controls {
+    margin-top: 9px;
+    color: #b3bbcb; }
+    #sidenav .controls span.primary {
+      font-family: sf_ui_textsemibold;
+      font-size: 12px; }
+  #sidenav .projects {
+    margin-top: 4px; }
+    #sidenav .projects .md-button {
+      letter-spacing: 1px; }
+  #sidenav .bottom md-list-item {
+    padding: 0; }
+  #sidenav .bottom .md-button {
+    margin: 0;
+    padding: 0 15px;
+    text-align: left;
+    letter-spacing: 1px; }
+
+#content {
+  background: #f7f7f7; }
+  #content md-toolbar {
+    background: transparent; }
+    #content md-toolbar .md-toolbar-tools {
+      height: 50px; }
+      #content md-toolbar .md-toolbar-tools md-menu:last-child {
+        margin-right: -2px; }
+    #content md-toolbar .searchbox {
+      padding: 0 15px; }
+    #content md-toolbar .md-button {
+      margin: 0px;
+      padding: 0px 2px;
+      min-width: 0;
+      margin-top: -5px; }
+    #content md-toolbar md-icon {
+      font-size: 28px;
+      color: #b3bbcb; }
+  #content .no-tasks {
+    padding-bottom: 107px; }
+    #content .no-tasks md-icon {
+      color: #6b6b99;
+      font-size: 202px;
+      height: auto;
+      opacity: .4;
+      width: auto; }
+    #content .no-tasks h3 {
+      color: #6b6b99;
+      font-family: sf_ui_textmedium;
+      font-size: 23px;
+      letter-spacing: 1px;
+      margin: 0;
+      opacity: .4; }
+
+#newProject {
+  position: fixed;
+  height: 50px;
+  width: 50px;
+  text-shadow: none;
+  right: 22px;
+  bottom: 24px; }
+  #newProject md-icon {
+    line-height: 30px;
+    height: 30px;
+    font-size: 30px;
+    color: #ffffff; }
+
+.md-sidenav-right {
+  width: 500px;
+  max-width: 500px;
+  background: #292c33; }
+  .md-sidenav-right * {
+    color: #ffffff; }
+  .md-sidenav-right h3 {
+    font-size: 18px;
+    font-family: sf_ui_textmedium;
+    font-weight: normal; }
+  .md-sidenav-right .right-col {
+    width: 79px; }
+  .md-sidenav-right .md-input {
+    border-color: #ffffff; }
+  .md-sidenav-right .md-input-focused {
+    color: #ffffff; }
 
 /*# sourceMappingURL=main.css.map */

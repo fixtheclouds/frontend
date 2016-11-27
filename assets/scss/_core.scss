@@ -3,6 +3,7 @@
 }
 body {
   overflow-x: hidden;
+  font-family: sf_ui_textregular;
 
   * {
     @extend %normal-case;
@@ -10,12 +11,201 @@ body {
 }
 
 #sidenav {
-  width: 342px;
+  width: 342.5px;
   background-color: $dark;
+  padding: 0 30px;
+  padding-top: 4px;
 
   .md-button:hover,
   .md-button:focus {
     background-color: $purple;
+  }
+
+  md-list-item {
+    * {
+      color: $white;
+    }
+
+    span.primary {
+      text-align: left;
+    }
+
+    span.secondary {
+      text-align: right;
+    }
+  }
+
+  .user {
+
+    md-list-item {
+      padding-left: 10px;
+    }
+
+    img.md-avatar {
+      width: 50px;
+      height: 50px;
+      border: 1px solid white;
+      padding: 4px;
+    }
+
+    h4 {
+      color: $white;
+      font: {
+        family: sf_ui_textsemibold;
+        size: 15px;
+      }
+      padding-left: 4px;
+    }
+  }
+
+  .controls, .projects {
+    padding: 0;
+
+    md-list-item {
+      padding: 0;
+      height: 40px;
+      min-height: 40px;
+    }
+
+    .md-button {
+      line-height: 40px;
+      margin: 0;
+      min-height: 40px;
+      padding: 0 15px;
+    }
+  }
+
+  .controls {
+    margin-top: 9px;
+    color: $blue-grey;
+
+    span.primary {
+      font: {
+        family: sf_ui_textsemibold;
+        size: 12px;
+      }
+    }
+  }
+
+  .projects {
+    margin-top: 4px;
+    
+    .md-button {
+      letter-spacing: 1px;
+    }
+  }
+
+  .bottom {
+    md-list-item {
+      padding: 0;
+    }
+
+    .md-button {
+      margin: 0;
+      padding: 0 15px;
+      text-align: left;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+#content {
+  background: $fill;
+
+    md-toolbar {
+    background: transparent;
+
+    .md-toolbar-tools {
+      height: 50px;
+
+      md-menu:last-child {
+        margin-right: -2px;
+      }
+    }
+
+    .searchbox {
+      padding: 0 15px;
+    }
+
+    .md-button {
+      margin: 0px;
+      padding: 0px 2px;
+      min-width: 0;
+      margin-top: -5px;
+    }
+
+    md-icon {
+      font-size: 28px;
+      color: $blue-grey;
+    }
+  }
+
+  .no-tasks {
+    padding-bottom: 107px;
+
+    md-icon {
+      color: $purple;
+      font-size: 202px;
+      height: auto;
+      opacity: .4;
+      width: auto;
+    }
+
+    h3 {
+      color: $purple;
+      font: {
+        family: sf_ui_textmedium;
+        size: 23px;
+      }
+      letter-spacing: 1px;
+      margin: 0;
+      opacity: .4;
+    }
+  }
+}
+
+#newProject {
+  position: fixed;
+  height: 50px;
+  width: 50px;
+  text-shadow: none;
+  right: 22px;
+  bottom: 24px;
+  md-icon {
+    line-height: 30px;
+    height: 30px;
+    font-size: 30px;
+    color: $white;
+  }
+}
+
+.md-sidenav-right {
+  width: 500px;
+  max-width: 500px;
+  background: $dark;
+
+  * {
+    color: $white;
+  }
+
+  h3 {
+    font: {
+      size: 18px;
+      family: sf_ui_textmedium;
+      weight: normal;
+    }
+  }
+
+  .right-col {
+    width: 79px;
+  }
+
+  .md-input {
+    border-color: $white;
+  }
+
+  .md-input-focused {
+    color: $white;
   }
 }
 

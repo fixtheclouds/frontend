@@ -15,7 +15,7 @@
 
 <div flex layout="row" ng-controller="AppController" id="wrapper">
     <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp" id="sidenav">
-        <md-list>
+        <md-list class="user">
             <md-list-item>
                 <img class="md-avatar" src="assets/img/user.png"/>
                 <div class="md-list-item-text" layout="column">
@@ -23,19 +23,19 @@
                 </div>
             </md-list-item>
         </md-list>
-        <md-list>
+        <md-list class="controls">
             <md-list-item class="md-clickable">
                 <button class="md-button" layout="row" flex ng-click="toggleProjectPanel()">
-                    <span flex>Projects</span>
-                    <span flex>+</span>
+                    <span class="primary" flex>Projects</span>
+                    <span class="secondary" flex>+</span>
                 </button>
             </md-list-item>
         </md-list>
-        <md-list flex>
+        <md-list flex class="projects">
             <md-list-item class="md-clickable" ng-repeat="project in projects">
                 <button class="md-button" layout="row" flex ng-click="showTasksByProject(project.id)">
-                    <span flex>{{project.name}}</span>
-                    <span flex>{{taskCount[project.id]}}</span>
+                    <span class="primary"  flex>{{project.name}}</span>
+                    <span class="secondary" flex>{{taskCount[project.id]}}</span>
                 </button>
             </md-list-item>
         </md-list>
@@ -49,13 +49,13 @@
         </md-list>
     </md-sidenav>
 
-    <md-content id="content" flex>
+    <md-content id="content" flex layout="column">
         <md-toolbar>
             <div class="md-toolbar-tools">
                 <md-button ng-click="toggleSearchBar()">
                     <md-icon md-font-set="i8" md-font-icon="icons8-search"></md-icon>
                 </md-button>
-                <div flex>
+                <div flex class="searchbox">
                     <md-autocomplete md-items="[]" ng-show="searchBarIsOn">
 
                     </md-autocomplete>
@@ -97,22 +97,26 @@
             </div>
             <div flex="20"></div>
         </div>
-        <div layout ng-hide="hasTasks()">
-            <div flex>
+        <div flex ng-hide="hasTasks()" layout-align="center center" layout="row" class="no-tasks">
+
+            <div layout="column" flex layout-align="center center">
                 <md-icon class="icons8-todo-list"></md-icon>
-                <h3>Have a nice day</h3>
+                <h3>Have a good day</h3>
             </div>
+
         </div>
-        <button class="md-fab md-fab-bottom-right md-button" ng-click="toggleTaskPanel()">
+        <button class="md-fab md-fab-bottom-right md-button" id="newProject" ng-click="toggleTaskPanel()">
             <md-icon md-font-set="i8" md-font-icon="icons8-plus"></md-icon>
         </button>
     </md-content><!-- #content -->
 
     <md-sidenav class="md-whiteframe-4dp md-sidenav-right" md-component-id="tasks">
-        <div layout="row">
-            <md-button flex="20" ng-click="toggleTaskPanel()">
-                <md-icon md-font-set="i8" md-font-icon="icons8-delete-2"></md-icon>
-            </md-button>
+        <div layout="row" class="header">
+            <div class="right-col">
+                <md-button ng-click="toggleTaskPanel()">
+                    <md-icon md-font-set="i8" md-font-icon="icons8-delete-2"></md-icon>
+                </md-button>
+            </div>
             <div flex>
                 <h3>
                     Create new task
@@ -120,14 +124,14 @@
             </div>
         </div>
         <div layout="row">
-            <div flex="20"></div>
+            <div class="right-col"></div>
             <div flex>
                 <form>
-                    <md-input-container>
+                    <md-input-container class="md-block">
                         <label>Task name</label>
                         <input type="text">
                     </md-input-container>
-                    <md-input-container>
+                    <md-input-container class="md-block">
                         <label>Description</label>
                         <input type="text">
                     </md-input-container>
