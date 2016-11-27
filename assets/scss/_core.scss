@@ -85,11 +85,15 @@ body {
         size: 12px;
       }
     }
+
+    span.secondary {
+      font-size: 22px;
+    }
   }
 
   .projects {
     margin-top: 4px;
-    
+
     .md-button {
       letter-spacing: 1px;
     }
@@ -112,8 +116,10 @@ body {
 #content {
   background: $fill;
 
-    md-toolbar {
+  md-toolbar {
     background: transparent;
+    height: 50px;
+    min-height: 50px;
 
     .md-toolbar-tools {
       height: 50px;
@@ -160,6 +166,45 @@ body {
       letter-spacing: 1px;
       margin: 0;
       opacity: .4;
+    }
+  }
+
+  .task-list {
+    width: 621px;
+
+    h4 {
+      color: $blue-grey;
+      margin: 15px 8px 4px 8px;
+
+      span {
+        font-size: 12px;
+      }
+    }
+
+    md-list {
+      padding: 0;
+      border-radius: 10px;
+
+      md-list-item {
+        height: 60px;
+        box-sizing: border-box;
+
+        .md-button {
+          font: {
+            size: 15px;
+            family: sf_ui_textsemibold;
+          }
+          color: $black;
+        }
+      }
+    }
+
+    md-radio-group {
+      height: 100%;
+
+      md-radio-button {
+        height: 100%;
+      }
     }
   }
 }

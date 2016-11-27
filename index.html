@@ -82,10 +82,10 @@
             </div>
         </md-toolbar>
         <div layout="row" ng-repeat="(key, value) in currentTaskList | groupBy: 'dateName'" ng-show="hasTasks()">
-            <div flex="20"></div>
-            <div flex >
-                <h4>{{ key }}</h4>
-                <md-list class="md-whiteframe-8dp">
+            <div flex></div>
+            <div class="task-list" >
+                <h4>{{ key }}<span ng-show="value[0].date"> ({{ value[0].date }})</span></h4>
+                <md-list class="md-whiteframe-4dp">
                     <md-list-item ng-repeat="task in value">
                         <md-radio-group>
                             <md-radio-button layout="row" layout-align="start center">
@@ -95,7 +95,7 @@
                     </md-list-item>
                 </md-list>
             </div>
-            <div flex="20"></div>
+            <div flex></div>
         </div>
         <div flex ng-hide="hasTasks()" layout-align="center center" layout="row" class="no-tasks">
 

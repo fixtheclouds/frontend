@@ -207,6 +207,8 @@ body {
     #sidenav .controls span.primary {
       font-family: sf_ui_textsemibold;
       font-size: 12px; }
+    #sidenav .controls span.secondary {
+      font-size: 22px; }
   #sidenav .projects {
     margin-top: 4px; }
     #sidenav .projects .md-button {
@@ -222,7 +224,9 @@ body {
 #content {
   background: #f7f7f7; }
   #content md-toolbar {
-    background: transparent; }
+    background: transparent;
+    height: 50px;
+    min-height: 50px; }
     #content md-toolbar .md-toolbar-tools {
       height: 50px; }
       #content md-toolbar .md-toolbar-tools md-menu:last-child {
@@ -252,6 +256,27 @@ body {
       letter-spacing: 1px;
       margin: 0;
       opacity: .4; }
+  #content .task-list {
+    width: 621px; }
+    #content .task-list h4 {
+      color: #b3bbcb;
+      margin: 15px 8px 4px 8px; }
+      #content .task-list h4 span {
+        font-size: 12px; }
+    #content .task-list md-list {
+      padding: 0;
+      border-radius: 10px; }
+      #content .task-list md-list md-list-item {
+        height: 60px;
+        box-sizing: border-box; }
+        #content .task-list md-list md-list-item .md-button {
+          font-size: 15px;
+          font-family: sf_ui_textsemibold;
+          color: #212121; }
+    #content .task-list md-radio-group {
+      height: 100%; }
+      #content .task-list md-radio-group md-radio-button {
+        height: 100%; }
 
 #newProject {
   position: fixed;
