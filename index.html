@@ -12,14 +12,30 @@
 </head>
 
 <body ng-app="app" ng-cloak layout="column">
-<!-- Content -->
-<div flex layout="row">
+
+<div flex layout="row" ng-controller="AppController" id="wrapper">
     <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp" id="sidenav">
-        <md-list flex>
+        <md-list>
+            <md-list-item>
+                <img class="md-avatar" src="assets/img/user.png"/>
+                <div class="md-list-item-text" layout="column">
+                    <h4>Trevor Reyes</h4>
+                </div>
+            </md-list-item>
+        </md-list>
+        <md-list>
             <md-list-item class="md-clickable">
-                <button class="md-button md-accent" layout="row" flex>
+                <button class="md-button" layout="row" flex ng-click="toggleProjectPanel()">
                     <span flex>Projects</span>
-                    <span flex>8</span>
+                    <span flex>+</span>
+                </button>
+            </md-list-item>
+        </md-list>
+        <md-list flex>
+            <md-list-item class="md-clickable" ng-repeat="project in projects">
+                <button class="md-button" layout="row" flex ng-click="showTasksByProject(project.id)">
+                    <span flex>{{project.name}}</span>
+                    <span flex>{{taskCount[project.id]}}</span>
                 </button>
             </md-list-item>
         </md-list>
@@ -36,65 +52,137 @@
     <md-content id="content" flex>
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <md-button>
+                <md-button ng-click="toggleSearchBar()">
                     <md-icon md-font-set="i8" md-font-icon="icons8-search"></md-icon>
                 </md-button>
                 <div flex>
-                    <md-autocomplete md-items="[]">
+                    <md-autocomplete md-items="[]" ng-show="searchBarIsOn">
 
                     </md-autocomplete>
                 </div>
-                <md-button>
-                    <md-icon md-font-set="i8" md-font-icon="icons8-more"></md-icon>
-                </md-button>
+                <md-menu>
+                    <md-button ng-click="openMenu($mdOpenMenu, $event)">
+                        <md-icon md-font-set="i8" md-font-icon="icons8-more" md-menu-align-target></md-icon>
+                    </md-button>
+                    <md-menu-content width="4">
+                        <md-menu-item>
+                            <md-button ng-click="">
+                                <md-icon class="icons8-edit"></md-icon>
+                                Edit
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="">
+                                <md-icon class="icons8-delete"></md-icon>
+                                Delete
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
             </div>
         </md-toolbar>
-        <div layout="row">
+        <div layout="row" ng-repeat="(key, value) in currentTaskList | groupBy: 'dateName'" ng-show="hasTasks()">
             <div flex="20"></div>
-            <div flex><h4>Today</h4>
+            <div flex >
+                <h4>{{ key }}</h4>
                 <md-list class="md-whiteframe-8dp">
-                    <md-list-item>
+                    <md-list-item ng-repeat="task in value">
                         <md-radio-group>
                             <md-radio-button layout="row" layout-align="start center">
                             </md-radio-button>
                         </md-radio-group>
-                        <md-button ng-click="ctrl.viewTask()">Create a company</md-button>
+                        <md-button ng-click="viewTask(task.id)">{{task.name}}</md-button>
                     </md-list-item>
                 </md-list>
-                <h4>Friday<small>(09.06.2016)</small></h4>
-                <md-list class="md-whiteframe-8dp">
-                    <md-list-item>
-                        <md-radio-group>
-                            <md-radio-button>
-                            </md-radio-button>
-                        </md-radio-group>
-                        <md-button ng-click="ctrl.viewTask()">Call in a barber shop</md-button>
-
-
-                    </md-list-item>
-                </md-list></div>
+            </div>
             <div flex="20"></div>
         </div>
-        <button class="md-fab md-fab-bottom-right md-button md-ink-ripple">
+        <div layout ng-hide="hasTasks()">
+            <div flex>
+                <md-icon class="icons8-todo-list"></md-icon>
+                <h3>Have a nice day</h3>
+            </div>
+        </div>
+        <button class="md-fab md-fab-bottom-right md-button" ng-click="toggleTaskPanel()">
             <md-icon md-font-set="i8" md-font-icon="icons8-plus"></md-icon>
         </button>
-    </md-content>
+    </md-content><!-- #content -->
 
     <md-sidenav class="md-whiteframe-4dp md-sidenav-right" md-component-id="tasks">
+        <div layout="row">
+            <md-button flex="20" ng-click="toggleTaskPanel()">
+                <md-icon md-font-set="i8" md-font-icon="icons8-delete-2"></md-icon>
+            </md-button>
+            <div flex>
+                <h3>
+                    Create new task
+                </h3>
+            </div>
+        </div>
+        <div layout="row">
+            <div flex="20"></div>
+            <div flex>
+                <form>
+                    <md-input-container>
+                        <label>Task name</label>
+                        <input type="text">
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Description</label>
+                        <input type="text">
+                    </md-input-container>
+                </form>
+            </div>
+        </div>
     </md-sidenav>
 
     <md-sidenav class="md-whiteframe-4dp md-sidenav-right" md-component-id="projects">
+        <div layout="row">
+            <md-button flex="20" ng-click="toggleProjectPanel()">
+                <md-icon md-font-set="i8" md-font-icon="icons8-delete-2"></md-icon>
+            </md-button>
+            <div flex>
+                <h3>
+                    Create new project
+                </h3>
+            </div>
+        </div>
+        <div layout="row">
+            <div flex="20">
+
+            </div>
+            <div flex>
+                <form>
+                    <md-input-container>
+                        <label>Project name</label>
+                        <input type="text">
+                    </md-input-container>
+                </form>
+            </div>
+        </div>
     </md-sidenav>
 
     <md-sidenav class="md-whiteframe-4dp md-sidenav-right" md-component-id="view-task" layout-padding>
-        <h3>Placeholder content</h3>
-        <div class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.</div>
+        <div layout="row">
+            <md-button flex="20" ng-click="closeTask()">
+                <md-icon md-font-set="i8" md-font-icon="icons8-delete-2"></md-icon>
+            </md-button>
+            <div flex>
+                <h3>{{currentTask.name}}</h3>
+            </div>
+        </div>
+        <div layout="row">
+            <div flex="20"></div>
+            <div flex>
+                <div class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat.</div>
+            </div>
+        </div>
     </md-sidenav>
-</div>
-<!-- /Content -->
+</div><!-- #wrapepr -->
+
 
 <!--[if lt IE 9]>
 <script src="bower_components/es5-shim/es5-shim.js"></script>

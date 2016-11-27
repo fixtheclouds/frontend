@@ -157,6 +157,12 @@
   content: "\f10c"; }
 
 /* core styles */
+body *, .md-button {
+  text-transform: none; }
+
+body {
+  overflow-x: hidden; }
+
 #sidenav {
   width: 342px;
   background-color: #292c33; }

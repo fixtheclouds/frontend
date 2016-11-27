@@ -1,3 +1,14 @@
+%normal-case {
+  text-transform: none;
+}
+body {
+  overflow-x: hidden;
+
+  * {
+    @extend %normal-case;
+  }
+}
+
 #sidenav {
   width: 342px;
   background-color: $dark;
@@ -6,4 +17,8 @@
   .md-button:focus {
     background-color: $purple;
   }
+}
+
+.md-button {
+  @extend %normal-case;
 }

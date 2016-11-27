@@ -11,8 +11,10 @@ module.exports = function(grunt) {
                     '<%= sources %>/angular/angular.min.js',
                     '<%= sources %>/angular-animate/angular-animate.min.js',
                     '<%= sources %>/angular-aria/angular-aria.min.js',
-                     '<%= sources %>/angular-material/angular-material.min.js',
-                    '<%= sources %>/angular-messages/angular-messages.min.js'
+                    '<%= sources %>/angular-material/angular-material.min.js',
+                    '<%= sources %>/angular-messages/angular-messages.min.js',
+                    '<%= sources %>/angular-filter/dist/angular-filter.min.js',
+                    '<%= sources %>/underscore/underscore-min.js'
                 ],
                 dest: 'assets/libs/bundle.js'
             },
