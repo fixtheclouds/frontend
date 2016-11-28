@@ -1,5 +1,9 @@
 (function() {
-    angular.module('app', ['ngMaterial', 'angular.filter'])
+    angular.module('app', [
+        'ngMaterial',
+        'ngAnimate',
+        'angular.filter'
+    ])
         .config(['$mdIconProvider', '$mdThemingProvider', function ($mdIconProvider, $mdThemingProvider) {
             $mdIconProvider.fontSet('i8', 'icons8');
             $mdThemingProvider.definePalette('dark-violet', {
@@ -44,7 +48,7 @@
                 .primaryPalette('dark-grey')
                 .accentPalette('dark-violet');
         }])
-        .controller('AppController', ['$scope', '$mdSidenav', function ($scope, $mdSidenav) {
+        .controller('AppController', ['$scope', '$mdSidenav', '$mdDialog', function ($scope, $mdSidenav, $mdDialog) {
 
             //search bar visibility; off by default
             $scope.searchBarIsOn = false;
@@ -139,6 +143,7 @@
              * @param {integer} taskId
              */
             $scope.completeTask = function (taskId) {
+
                 var index = _.findIndex($scope.tasks, {id: taskId});
                 $scope.tasks.splice(index, 1);
                 index = _.findIndex($scope.currentTaskList, {id: taskId});
@@ -202,6 +207,67 @@
 
             $scope.toggleSearchBar = function () {
                 $scope.searchBarIsOn = !$scope.searchBarIsOn;
+            };
+
+            $scope.toggleMainSidenav = function () {
+                $mdSidenav('main')
+                    .toggle();
+            };
+
+            /**
+             * Dialogs
+             */
+            var noProjectDialog = function(e) {
+                $mdDialog.show(
+                    $mdDialog.alert()
+                        .clickOutsideToClose(true)
+                        .title('Select a project first!')
+                        .ariaLabel('Warning')
+                        .ok('OK')
+                        .targetEvent(e)
+                );
+            }
+
+            $scope.confirmProjectRemoval = function(e) {
+                var id = $scope.currentProject;
+                if (!id) {
+                    noProjectDialog(e);
+                } else {
+                    var confirm = $mdDialog.confirm()
+                        .title('Confirm project removal')
+                        .textContent('Are you sure?')
+                        .ariaLabel('Delete project')
+                        .targetEvent(e)
+                        .ok('OK')
+                        .cancel('Cancel');
+                    $mdDialog.show(confirm).then(function () {
+                        var index = _.findIndex($scope.projects, {id: id});
+                        $scope.projects.splice(index, 1);
+                        $scope.currentProject = null;
+                        $scope.showTasksByProject(null);
+                    });
+                }
+            };
+
+            $scope.editProject = function(e) {
+                var id = $scope.currentProject;
+                if (!id) {
+                    noProjectDialog(e);
+                } else {
+                    var project = _.findWhere($scope.projects, {id: id});
+                    var confirm = $mdDialog.prompt()
+                        .title('Edit project name')
+                        .placeholder('Project name')
+                        .ariaLabel('Project name')
+                        .initialValue(project.name)
+                        .targetEvent(e)
+                        .ok('Save')
+                        .cancel('Cancel');
+
+                    $mdDialog.show(confirm).then(function (result) {
+                        project.name = result;
+                    });
+                }
             };
 
         }]);

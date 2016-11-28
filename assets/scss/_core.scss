@@ -17,9 +17,7 @@ body {
   padding: 0 30px;
   padding-top: 4px;
 
-  .md-button:hover,
-  .md-button:focus,
-  .md-button.active {
+  .active {
     background-color: $purple;
   }
 
@@ -71,7 +69,12 @@ body {
       min-height: 40px;
     }
 
+    md-list-item,
     .md-button {
+      border-radius: 5px;
+    }
+
+    .md-button, .heading {
       line-height: 40px;
       margin: 0;
       min-height: 40px;
@@ -83,6 +86,7 @@ body {
     margin-top: 9px;
     color: $blue-grey;
 
+
     span.primary {
       font: {
         family: sf_ui_textsemibold;
@@ -90,8 +94,11 @@ body {
       }
     }
 
-    span.secondary {
+    .secondary {
       font-size: 22px;
+      padding: 0;
+      text-align: right;
+      min-width: 0;
     }
   }
 
@@ -117,38 +124,44 @@ body {
   }
 }
 
-#content {
+md-toolbar.header-toolbar {
   background: $fill;
+  border-bottom: 1px solid $grey;
+  height: 50px;
+  min-height: 50px;
 
-  md-toolbar {
-    background: transparent;
+  .md-toolbar-tools {
     height: 50px;
-    min-height: 50px;
 
-    .md-toolbar-tools {
-      height: 50px;
-
-      md-menu:last-child {
-        margin-right: -2px;
-      }
-    }
-
-    .searchbox {
-      padding: 0 15px;
-    }
-
-    .md-button {
-      margin: 0px;
-      padding: 0px 2px;
-      min-width: 0;
-      margin-top: -5px;
-    }
-
-    md-icon {
-      font-size: 28px;
-      color: $blue-grey;
+    md-menu:last-child {
+      margin-right: -2px;
     }
   }
+
+  .searchbox {
+    padding: 0 15px;
+  }
+
+  .md-button {
+    margin: 0px;
+    padding: 0px 2px;
+    min-width: 0;
+    margin-top: -5px;
+    color: $blue-grey;
+    * {
+      text-transform: uppercase;
+
+    }
+  }
+
+  md-icon {
+    font-size: 28px;
+    color: $blue-grey;
+  }
+}
+
+#content {
+  background: $fill;
 
   .no-tasks {
     padding-bottom: 107px;
@@ -176,6 +189,13 @@ body {
   .task-list {
     width: 621px;
 
+    .md-button:focus,
+    .md-button:hover {
+      .md-off {
+        border-color: $white;
+      }
+    }
+
     h4 {
       color: $blue-grey;
       font: {
@@ -191,9 +211,19 @@ body {
       }
     }
 
+    .task {
+      &:last-child {
+        margin-bottom: 30px;
+      }
+    }
+
     md-list {
       padding: 0;
       border-radius: 10px;
+
+      .md-list-item-inner {
+        height: 100%;
+      }
 
       md-list-item {
         height: 60px;
@@ -214,7 +244,7 @@ body {
           left: 0;
         }
 
-        .md-button {
+        .name {
           font: {
             size: 15px;
             family: sf_ui_textsemibold;
@@ -275,6 +305,11 @@ md-menu-item {
   text-shadow: none;
   right: 22px;
   bottom: 24px;
+
+  &:hover {
+    background: darken($purple, 10%);
+  }
+
   md-icon {
     line-height: 30px;
     height: 30px;
@@ -414,4 +449,34 @@ md-menu-item {
 
 .md-button {
   @extend %normal-case;
+}
+
+md-autocomplete > md-autocomplete-wrap > md-progress-linear { display: none; }
+
+*:focus {
+  outline: none !important;
+}
+
+/* ng-animate */
+.repeat-item.ng-enter,
+.repeat-item.ng-leave {
+  -webkit-transition:0.5s linear all;
+  transition:0.5s linear all;
+}
+
+.repeat-item.ng-enter,
+.repeat-item.ng-leave.ng-leave-active {
+  opacity:0;
+
+}
+.repeat-item.ng-leave,
+.repeat-item.ng-enter.ng-enter-active {
+  opacity:1;
+
+}
+.repeat-item {
+
+}
+.delete {
+  float: right;
 }

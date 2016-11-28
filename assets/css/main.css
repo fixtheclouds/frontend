@@ -170,9 +170,7 @@ body {
   background-color: #292c33;
   padding: 0 30px;
   padding-top: 4px; }
-  #sidenav .md-button:hover,
-  #sidenav .md-button:focus,
-  #sidenav .md-button.active {
+  #sidenav .active {
     background-color: #6b6b99; }
   #sidenav md-list-item * {
     color: #ffffff; }
@@ -200,7 +198,11 @@ body {
       padding: 0;
       height: 40px;
       min-height: 40px; }
-    #sidenav .controls .md-button, #sidenav .projects .md-button {
+    #sidenav .controls md-list-item,
+    #sidenav .controls .md-button, #sidenav .projects md-list-item,
+    #sidenav .projects .md-button {
+      border-radius: 5px; }
+    #sidenav .controls .md-button, #sidenav .controls .heading, #sidenav .projects .md-button, #sidenav .projects .heading {
       line-height: 40px;
       margin: 0;
       min-height: 40px;
@@ -211,8 +213,11 @@ body {
     #sidenav .controls span.primary {
       font-family: sf_ui_textsemibold;
       font-size: 12px; }
-    #sidenav .controls span.secondary {
-      font-size: 22px; }
+    #sidenav .controls .secondary {
+      font-size: 22px;
+      padding: 0;
+      text-align: right;
+      min-width: 0; }
   #sidenav .projects {
     margin-top: 4px; }
     #sidenav .projects .md-button {
@@ -225,26 +230,31 @@ body {
     text-align: left;
     letter-spacing: 1px; }
 
+md-toolbar.header-toolbar {
+  background: #f7f7f7;
+  border-bottom: 1px solid #bdbdbd;
+  height: 50px;
+  min-height: 50px; }
+  md-toolbar.header-toolbar .md-toolbar-tools {
+    height: 50px; }
+    md-toolbar.header-toolbar .md-toolbar-tools md-menu:last-child {
+      margin-right: -2px; }
+  md-toolbar.header-toolbar .searchbox {
+    padding: 0 15px; }
+  md-toolbar.header-toolbar .md-button {
+    margin: 0px;
+    padding: 0px 2px;
+    min-width: 0;
+    margin-top: -5px;
+    color: #b3bbcb; }
+    md-toolbar.header-toolbar .md-button * {
+      text-transform: uppercase; }
+  md-toolbar.header-toolbar md-icon {
+    font-size: 28px;
+    color: #b3bbcb; }
+
 #content {
   background: #f7f7f7; }
-  #content md-toolbar {
-    background: transparent;
-    height: 50px;
-    min-height: 50px; }
-    #content md-toolbar .md-toolbar-tools {
-      height: 50px; }
-      #content md-toolbar .md-toolbar-tools md-menu:last-child {
-        margin-right: -2px; }
-    #content md-toolbar .searchbox {
-      padding: 0 15px; }
-    #content md-toolbar .md-button {
-      margin: 0px;
-      padding: 0px 2px;
-      min-width: 0;
-      margin-top: -5px; }
-    #content md-toolbar md-icon {
-      font-size: 28px;
-      color: #b3bbcb; }
   #content .no-tasks {
     padding-bottom: 107px; }
     #content .no-tasks md-icon {
@@ -262,6 +272,9 @@ body {
       opacity: .4; }
   #content .task-list {
     width: 621px; }
+    #content .task-list .md-button:focus .md-off,
+    #content .task-list .md-button:hover .md-off {
+      border-color: #ffffff; }
     #content .task-list h4 {
       color: #b3bbcb;
       font-family: sf_ui_textsemibold;
@@ -269,9 +282,13 @@ body {
       margin: 17px 8px 4px 8px; }
       #content .task-list h4 span {
         font-size: 12px; }
+    #content .task-list .task:last-child {
+      margin-bottom: 30px; }
     #content .task-list md-list {
       padding: 0;
       border-radius: 10px; }
+      #content .task-list md-list .md-list-item-inner {
+        height: 100%; }
       #content .task-list md-list md-list-item {
         height: 60px;
         box-sizing: border-box;
@@ -288,7 +305,7 @@ body {
           bottom: 0;
           right: 0;
           left: 0; }
-        #content .task-list md-list md-list-item .md-button {
+        #content .task-list md-list md-list-item .name {
           font-size: 15px;
           font-family: sf_ui_textsemibold;
           color: #212121;
@@ -328,6 +345,8 @@ md-menu-item .md-button md-icon {
   text-shadow: none;
   right: 22px;
   bottom: 24px; }
+  #newProject:hover {
+    background: #55557c; }
   #newProject md-icon {
     line-height: 30px;
     height: 30px;
@@ -407,5 +426,28 @@ md-menu-item .md-button md-icon {
     .md-sidenav-right .actions md-icon {
       color: #51555e;
       font-size: 18px; }
+
+md-autocomplete > md-autocomplete-wrap > md-progress-linear {
+  display: none; }
+
+*:focus {
+  outline: none !important; }
+
+/* ng-animate */
+.repeat-item.ng-enter,
+.repeat-item.ng-leave {
+  -webkit-transition: 0.5s linear all;
+  transition: 0.5s linear all; }
+
+.repeat-item.ng-enter,
+.repeat-item.ng-leave.ng-leave-active {
+  opacity: 0; }
+
+.repeat-item.ng-leave,
+.repeat-item.ng-enter.ng-enter-active {
+  opacity: 1; }
+
+.delete {
+  float: right; }
 
 /*# sourceMappingURL=main.css.map */

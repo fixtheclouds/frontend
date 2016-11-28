@@ -14,7 +14,7 @@
 <body ng-app="app" ng-cloak layout="column">
 
 <div flex layout="row" ng-controller="AppController" id="wrapper">
-    <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp" id="sidenav">
+    <md-sidenav layout="column" md-is-locked-open="$mdMedia('gt-md')" class="md-whiteframe-4dp" id="sidenav" md-component-id="main">
         <md-list class="user">
             <md-list-item>
                 <img class="md-avatar" src="assets/img/user.png"/>
@@ -24,19 +24,19 @@
             </md-list-item>
         </md-list>
         <md-list class="controls">
-            <md-list-item class="md-clickable">
-                <button class="md-button" layout="row" flex ng-click="toggleProjectPanel()">
-                    <span class="primary" flex="70">Projects</span>
-                    <span class="secondary" flex="30">+</span>
-                </button>
+            <md-list-item>
+                <div layout="row" flex class="heading">
+                    <span class="primary" flex>Projects</span>
+                    <md-button class="secondary"  ng-click="toggleProjectPanel()">+</md-button>
+                </div>
             </md-list-item>
         </md-list>
         <md-list flex class="projects">
-            <md-list-item class="md-clickable" ng-repeat="project in projects">
-                <button class="md-button" layout="row" flex ng-click="showTasksByProject(project.id)" ng-class="{active: currentProject == project.id}">
+            <md-list-item ng-repeat="project in projects" ng-click="showTasksByProject(project.id)" ng-class="{active: currentProject == project.id}">
+                <div class="project" layout="row" flex>
                     <span class="primary"  flex="70">{{project.name}}</span>
                     <span class="secondary" flex="30">{{taskCount[project.id]}}</span>
-                </button>
+                </div>
             </md-list-item>
         </md-list>
 
@@ -48,56 +48,60 @@
             </md-list-item>
         </md-list>
     </md-sidenav>
+    <div layout="column" flex>
+    <md-toolbar class="header-toolbar">
+        <div class="md-toolbar-tools">
+            <md-button  hide-gt-md ng-click="toggleMainSidenav()">Menu</md-button>
+            <md-button ng-click="toggleSearchBar()">
+                <md-icon md-font-set="i8" md-font-icon="icons8-search"></md-icon>
+            </md-button>
+            <div flex class="searchbox">
+                <md-autocomplete md-items="[]" ng-show="searchBarIsOn">
 
-    <md-content id="content" flex layout="column">
-        <md-toolbar>
-            <div class="md-toolbar-tools">
-                <md-button ng-click="toggleSearchBar()">
-                    <md-icon md-font-set="i8" md-font-icon="icons8-search"></md-icon>
-                </md-button>
-                <div flex class="searchbox">
-                    <md-autocomplete md-items="[]" ng-show="searchBarIsOn">
-
-                    </md-autocomplete>
-                </div>
-                <md-menu>
-                    <md-button ng-click="openMenu($mdOpenMenu, $event)">
-                        <md-icon md-font-set="i8" md-font-icon="icons8-more" md-menu-align-target></md-icon>
-                    </md-button>
-                    <md-menu-content width="4">
-                        <md-menu-item>
-                            <md-button ng-click="">
-                                <md-icon class="icons8-edit"></md-icon>
-                                Edit
-                            </md-button>
-                        </md-menu-item>
-                        <md-menu-item>
-                            <md-button ng-click="">
-                                <md-icon class="icons8-delete"></md-icon>
-                                Delete
-                            </md-button>
-                        </md-menu-item>
-                    </md-menu-content>
-                </md-menu>
+                </md-autocomplete>
             </div>
-        </md-toolbar>
-        <div layout="row" ng-repeat="(key, value) in currentTaskList | groupBy: 'dateName'" ng-show="hasTasks()">
+            <md-menu>
+                <md-button ng-click="openMenu($mdOpenMenu, $event)">
+                    <md-icon md-font-set="i8" md-font-icon="icons8-more" md-menu-align-target></md-icon>
+                </md-button>
+                <md-menu-content width="4">
+                    <md-menu-item>
+                        <md-button ng-click="editProject($event)">
+                            <md-icon class="icons8-edit"></md-icon>
+                            Edit
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-click="confirmProjectRemoval($event)">
+                            <md-icon class="icons8-delete"></md-icon>
+                            Delete
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </div>
+    </md-toolbar>
+    <md-content id="content" flex layout="column">
+
+        <div layout="row" ng-show="hasTasks()">
             <div flex></div>
             <div class="task-list" >
-                <h4>{{ key }}<span ng-show="value[0].date"> ({{ value[0].date }})</span></h4>
-                <md-list class="md-whiteframe-6dp">
-                    <md-list-item ng-repeat="task in value">
-                        <md-radio-group>
-                            <md-radio-button layout="row" layout-align="start center" ng-click="completeTask(task.id)">
-                            </md-radio-button>
-                        </md-radio-group>
-                        <md-button ng-click="viewTask(task.id)">{{task.name}}</md-button>
-                    </md-list-item>
-                </md-list>
+                <div class="task repeat-item" ng-repeat="(key, value) in currentTaskList | groupBy: 'dateName'">
+                    <h4>{{ key }}<span ng-show="value[0].date"> ({{ value[0].date }})</span></h4>
+                    <md-list class="md-whiteframe-6dp">
+                        <md-list-item ng-repeat="task in value" ng-click="viewTask(task.id)" class="repeat-item">
+                            <md-radio-group>
+                                <md-radio-button layout="row" layout-align="start center" ng-click="completeTask(task.id)">
+                                </md-radio-button>
+                            </md-radio-group>
+                            <div class="name">{{task.name}}</div>
+                        </md-list-item>
+                    </md-list>
+                </div>
             </div>
             <div flex></div>
         </div>
-        <div flex ng-hide="hasTasks()" layout-align="center center" layout="row" class="no-tasks">
+        <div flex ng-hide="hasTasks()" layout-align="center center" layout="row" class="no-tasks repeat-item">
 
             <div layout="column" flex layout-align="center center">
                 <md-icon class="icons8-todo-list"></md-icon>
@@ -105,10 +109,11 @@
             </div>
 
         </div>
-        <button class="md-fab md-fab-bottom-right md-button" id="newProject" ng-click="toggleTaskPanel()">
+        <md-button  class="md-fab md-fab-bottom-right" id="newProject" ng-click="toggleTaskPanel()">
             <md-icon md-font-set="i8" md-font-icon="icons8-plus"></md-icon>
-        </button>
+        </md-button>
     </md-content><!-- #content -->
+    </div>
 
     <md-sidenav class="md-whiteframe-4dp md-sidenav-right" md-component-id="tasks">
         <div layout="row" class="header">
