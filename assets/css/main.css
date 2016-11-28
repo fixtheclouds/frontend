@@ -202,18 +202,21 @@ body {
     #sidenav .controls .md-button, #sidenav .projects md-list-item,
     #sidenav .projects .md-button {
       border-radius: 5px; }
-    #sidenav .controls .md-button, #sidenav .controls .heading, #sidenav .projects .md-button, #sidenav .projects .heading {
+  #sidenav .controls {
+    margin-top: 9px;
+    color: #b3bbcb; }
+    #sidenav .controls .heading {
       line-height: 40px;
       margin: 0;
       min-height: 40px;
       padding: 0 15px; }
-  #sidenav .controls {
-    margin-top: 9px;
-    color: #b3bbcb; }
     #sidenav .controls span.primary {
       font-family: sf_ui_textsemibold;
       font-size: 12px; }
     #sidenav .controls .secondary {
+      float: right;
+      margin-right: -13px; }
+    #sidenav .controls md-icon {
       font-size: 22px;
       padding: 0;
       text-align: right;
@@ -221,7 +224,12 @@ body {
   #sidenav .projects {
     margin-top: 4px; }
     #sidenav .projects .md-button {
-      letter-spacing: 1px; }
+      line-height: 40px;
+      margin: 0;
+      min-height: 40px;
+      padding: 0 15px; }
+    #sidenav .projects .project {
+      letter-spacing: 0.5px; }
   #sidenav .bottom md-list-item {
     padding: 0; }
   #sidenav .bottom .md-button {
@@ -240,7 +248,8 @@ md-toolbar.header-toolbar {
     md-toolbar.header-toolbar .md-toolbar-tools md-menu:last-child {
       margin-right: -2px; }
   md-toolbar.header-toolbar .searchbox {
-    padding: 0 15px; }
+    padding: 4px 15px;
+    overflow: hidden; }
   md-toolbar.header-toolbar .md-button {
     margin: 0px;
     padding: 0px 2px;
@@ -252,11 +261,13 @@ md-toolbar.header-toolbar {
   md-toolbar.header-toolbar md-icon {
     font-size: 28px;
     color: #b3bbcb; }
+    md-toolbar.header-toolbar md-icon:hover {
+      color: #8692ac; }
 
 #content {
   background: #f7f7f7; }
   #content .no-tasks {
-    padding-bottom: 107px; }
+    padding-bottom: 93px; }
     #content .no-tasks md-icon {
       color: #6b6b99;
       font-size: 202px;
@@ -266,7 +277,7 @@ md-toolbar.header-toolbar {
     #content .no-tasks h3 {
       color: #6b6b99;
       font-family: sf_ui_textmedium;
-      font-size: 23px;
+      font-size: 22px;
       letter-spacing: 1px;
       margin: 0;
       opacity: .4; }
@@ -346,7 +357,7 @@ md-menu-item .md-button md-icon {
   right: 22px;
   bottom: 24px; }
   #newProject:hover {
-    background: #55557c; }
+    background: #4b4b6d; }
   #newProject md-icon {
     line-height: 30px;
     height: 30px;
@@ -435,12 +446,15 @@ md-autocomplete > md-autocomplete-wrap > md-progress-linear {
 
 /* ng-animate */
 .repeat-item.ng-enter,
-.repeat-item.ng-leave {
+.repeat-item.ng-leave,
+.toggled-item,
+.fromleft-item {
   -webkit-transition: 0.5s linear all;
   transition: 0.5s linear all; }
 
 .repeat-item.ng-enter,
-.repeat-item.ng-leave.ng-leave-active {
+.repeat-item.ng-leave.ng-leave-active,
+.toggled-item.ng-hide {
   opacity: 0; }
 
 .repeat-item.ng-leave,
@@ -449,5 +463,11 @@ md-autocomplete > md-autocomplete-wrap > md-progress-linear {
 
 .delete {
   float: right; }
+
+.fromleft-item {
+  left: 0; }
+
+.fromleft-item.ng-hide {
+  left: -150%; }
 
 /*# sourceMappingURL=main.css.map */

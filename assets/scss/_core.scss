@@ -74,17 +74,18 @@ body {
       border-radius: 5px;
     }
 
-    .md-button, .heading {
-      line-height: 40px;
-      margin: 0;
-      min-height: 40px;
-      padding: 0 15px;
-    }
   }
 
   .controls {
     margin-top: 9px;
     color: $blue-grey;
+
+    .heading {
+      line-height: 40px;
+      margin: 0;
+      min-height: 40px;
+      padding: 0 15px;
+    }
 
 
     span.primary {
@@ -95,10 +96,16 @@ body {
     }
 
     .secondary {
+      float: right;
+      margin-right: -13px;
+    }
+
+    md-icon {
       font-size: 22px;
       padding: 0;
       text-align: right;
       min-width: 0;
+
     }
   }
 
@@ -106,7 +113,14 @@ body {
     margin-top: 4px;
 
     .md-button {
-      letter-spacing: 1px;
+      line-height: 40px;
+      margin: 0;
+      min-height: 40px;
+      padding: 0 15px;
+    }
+
+    .project {
+      letter-spacing: 0.5px;
     }
   }
 
@@ -139,7 +153,8 @@ md-toolbar.header-toolbar {
   }
 
   .searchbox {
-    padding: 0 15px;
+    padding: 4px 15px;
+    overflow: hidden;
   }
 
   .md-button {
@@ -157,6 +172,10 @@ md-toolbar.header-toolbar {
   md-icon {
     font-size: 28px;
     color: $blue-grey;
+
+    &:hover {
+      color: darken($blue-grey, 15%);
+    }
   }
 }
 
@@ -164,7 +183,7 @@ md-toolbar.header-toolbar {
   background: $fill;
 
   .no-tasks {
-    padding-bottom: 107px;
+    padding-bottom: 93px;
 
     md-icon {
       color: $purple;
@@ -178,7 +197,7 @@ md-toolbar.header-toolbar {
       color: $purple;
       font: {
         family: sf_ui_textmedium;
-        size: 23px;
+        size: 22px;
       }
       letter-spacing: 1px;
       margin: 0;
@@ -307,7 +326,7 @@ md-menu-item {
   bottom: 24px;
 
   &:hover {
-    background: darken($purple, 10%);
+    background: darken($purple, 15%);
   }
 
   md-icon {
@@ -451,7 +470,15 @@ md-menu-item {
   @extend %normal-case;
 }
 
-md-autocomplete > md-autocomplete-wrap > md-progress-linear { display: none; }
+md-autocomplete {
+
+  > md-autocomplete-wrap  {
+
+    > md-progress-linear {
+      display: none;
+    }
+  }
+}
 
 *:focus {
   outline: none !important;
@@ -459,13 +486,16 @@ md-autocomplete > md-autocomplete-wrap > md-progress-linear { display: none; }
 
 /* ng-animate */
 .repeat-item.ng-enter,
-.repeat-item.ng-leave {
+.repeat-item.ng-leave,
+.toggled-item,
+.fromleft-item {
   -webkit-transition:0.5s linear all;
   transition:0.5s linear all;
 }
 
 .repeat-item.ng-enter,
-.repeat-item.ng-leave.ng-leave-active {
+.repeat-item.ng-leave.ng-leave-active,
+.toggled-item.ng-hide {
   opacity:0;
 
 }
@@ -480,3 +510,11 @@ md-autocomplete > md-autocomplete-wrap > md-progress-linear { display: none; }
 .delete {
   float: right;
 }
+.fromleft-item {
+  left: 0;
+}
+
+.fromleft-item.ng-hide {
+  left: -150%;
+}
+

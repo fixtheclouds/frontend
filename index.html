@@ -27,7 +27,9 @@
             <md-list-item>
                 <div layout="row" flex class="heading">
                     <span class="primary" flex>Projects</span>
-                    <md-button class="secondary"  ng-click="toggleProjectPanel()">+</md-button>
+                    <md-button class="secondary md-icon-button"  ng-click="toggleProjectPanel()">
+                        <md-icon class="icons8-plus"></md-icon>
+                    </md-button>
                 </div>
             </md-list-item>
         </md-list>
@@ -52,16 +54,16 @@
     <md-toolbar class="header-toolbar">
         <div class="md-toolbar-tools">
             <md-button  hide-gt-md ng-click="toggleMainSidenav()">Menu</md-button>
-            <md-button ng-click="toggleSearchBar()">
+            <md-button class="md-icon-button" ng-click="toggleSearchBar()">
                 <md-icon md-font-set="i8" md-font-icon="icons8-search"></md-icon>
             </md-button>
             <div flex class="searchbox">
-                <md-autocomplete md-items="[]" ng-show="searchBarIsOn">
+                <md-autocomplete md-items="[]" ng-show="searchBarIsOn" class="toggled-item">
 
                 </md-autocomplete>
             </div>
             <md-menu>
-                <md-button ng-click="openMenu($mdOpenMenu, $event)">
+                <md-button class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
                     <md-icon md-font-set="i8" md-font-icon="icons8-more" md-menu-align-target></md-icon>
                 </md-button>
                 <md-menu-content width="4">
