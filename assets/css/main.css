@@ -177,9 +177,11 @@ body {
   #sidenav md-list-item * {
     color: #ffffff; }
   #sidenav md-list-item span.primary {
-    text-align: left; }
+    text-align: left;
+    float: left; }
   #sidenav md-list-item span.secondary {
-    text-align: right; }
+    text-align: right;
+    float: right; }
   #sidenav .user md-list-item {
     padding-left: 10px; }
   #sidenav .user img.md-avatar {
@@ -303,7 +305,8 @@ body {
           height: 40px;
           width: 1px;
           position: absolute;
-          right: 0; }
+          right: 0;
+          top: 10px; }
         #content .task-list md-radio-group md-radio-button .md-container {
           left: 0;
           right: 0;

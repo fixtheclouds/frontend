@@ -26,16 +26,16 @@
         <md-list class="controls">
             <md-list-item class="md-clickable">
                 <button class="md-button" layout="row" flex ng-click="toggleProjectPanel()">
-                    <span class="primary" flex>Projects</span>
-                    <span class="secondary" flex>+</span>
+                    <span class="primary" flex="70">Projects</span>
+                    <span class="secondary" flex="30">+</span>
                 </button>
             </md-list-item>
         </md-list>
         <md-list flex class="projects">
             <md-list-item class="md-clickable" ng-repeat="project in projects">
                 <button class="md-button" layout="row" flex ng-click="showTasksByProject(project.id)" ng-class="{active: currentProject == project.id}">
-                    <span class="primary"  flex>{{project.name}}</span>
-                    <span class="secondary" flex>{{taskCount[project.id]}}</span>
+                    <span class="primary"  flex="70">{{project.name}}</span>
+                    <span class="secondary" flex="30">{{taskCount[project.id]}}</span>
                 </button>
             </md-list-item>
         </md-list>

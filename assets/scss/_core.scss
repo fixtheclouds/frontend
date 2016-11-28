@@ -30,10 +30,12 @@ body {
 
     span.primary {
       text-align: left;
+      float: left;
     }
 
     span.secondary {
       text-align: right;
+      float: right;
     }
   }
 
@@ -237,6 +239,7 @@ body {
           width: 1px;
           position: absolute;
           right: 0;
+          top: 10px;
         }
 
         .md-container {
