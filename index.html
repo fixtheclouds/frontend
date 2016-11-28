@@ -33,7 +33,7 @@
         </md-list>
         <md-list flex class="projects">
             <md-list-item class="md-clickable" ng-repeat="project in projects">
-                <button class="md-button" layout="row" flex ng-click="showTasksByProject(project.id)">
+                <button class="md-button" layout="row" flex ng-click="showTasksByProject(project.id)" ng-class="{active: currentProject == project.id}">
                     <span class="primary"  flex>{{project.name}}</span>
                     <span class="secondary" flex>{{taskCount[project.id]}}</span>
                 </button>
@@ -85,10 +85,10 @@
             <div flex></div>
             <div class="task-list" >
                 <h4>{{ key }}<span ng-show="value[0].date"> ({{ value[0].date }})</span></h4>
-                <md-list class="md-whiteframe-4dp">
+                <md-list class="md-whiteframe-6dp">
                     <md-list-item ng-repeat="task in value">
                         <md-radio-group>
-                            <md-radio-button layout="row" layout-align="start center">
+                            <md-radio-button layout="row" layout-align="start center" ng-click="completeTask(task.id)">
                             </md-radio-button>
                         </md-radio-group>
                         <md-button ng-click="viewTask(task.id)">{{task.name}}</md-button>
@@ -112,9 +112,10 @@
 
     <md-sidenav class="md-whiteframe-4dp md-sidenav-right" md-component-id="tasks">
         <div layout="row" class="header">
-            <div class="right-col">
+            <div class="close-btn">
                 <md-button ng-click="toggleTaskPanel()">
                     <md-icon md-font-set="i8" md-font-icon="icons8-delete-2"></md-icon>
+                    <span>ESC</span>
                 </md-button>
             </div>
             <div flex>
@@ -137,14 +138,20 @@
                     </md-input-container>
                 </form>
             </div>
+            <button class="md-fab md-fab-bottom-right md-button" id="newProject" ng-click="toggleTaskPanel()">
+                <md-icon md-font-set="i8" md-font-icon="icons8-checkmark"></md-icon>
+            </button>
         </div>
-    </md-sidenav>
+    </md-sidenav><!-- #tasks -->
 
     <md-sidenav class="md-whiteframe-4dp md-sidenav-right" md-component-id="projects">
-        <div layout="row">
-            <md-button flex="20" ng-click="toggleProjectPanel()">
-                <md-icon md-font-set="i8" md-font-icon="icons8-delete-2"></md-icon>
-            </md-button>
+        <div layout="row" class="header">
+            <div class="close-btn">
+                <md-button ng-click="toggleProjectPanel()">
+                    <md-icon md-font-set="i8" md-font-icon="icons8-delete-2"></md-icon>
+                    <span>ESC</span>
+                </md-button>
+            </div>
             <div flex>
                 <h3>
                     Create new project
@@ -152,31 +159,44 @@
             </div>
         </div>
         <div layout="row">
-            <div flex="20">
-
-            </div>
+            <div class="right-col"></div>
             <div flex>
                 <form>
-                    <md-input-container>
+                    <md-input-container class="md-block">
                         <label>Project name</label>
                         <input type="text">
                     </md-input-container>
                 </form>
             </div>
+            <button class="md-fab md-fab-bottom-right md-button" id="newProject" ng-click="toggleProjectPanel()">
+                <md-icon md-font-set="i8" md-font-icon="icons8-checkmark"></md-icon>
+            </button>
         </div>
-    </md-sidenav>
+    </md-sidenav><!-- #projects -->
 
-    <md-sidenav class="md-whiteframe-4dp md-sidenav-right" md-component-id="view-task" layout-padding>
-        <div layout="row">
-            <md-button flex="20" ng-click="closeTask()">
-                <md-icon md-font-set="i8" md-font-icon="icons8-delete-2"></md-icon>
-            </md-button>
+    <md-sidenav class="md-whiteframe-4dp md-sidenav-right" md-component-id="view-task">
+        <div layout="row" class="header">
+            <div class="close-btn">
+                <md-button ng-click="closeTask()">
+                    <md-icon md-font-set="i8" md-font-icon="icons8-delete-2"></md-icon>
+                    <span>ESC</span>
+                </md-button>
+            </div>
+            <div flex="20"></div>
             <div flex>
                 <h3>{{currentTask.name}}</h3>
             </div>
+            <div flex="20" class="actions" layout="row" layout-align="start end">
+                <md-button>
+                    <md-icon md-font-set="i8" md-font-icon="icons8-edit"></md-icon>
+                </md-button>
+                <md-button>
+                    <md-icon md-font-set="i8" md-font-icon="icons8-delete"></md-icon>
+                </md-button>
+            </div>
         </div>
         <div layout="row">
-            <div flex="20"></div>
+            <div class="right-col"></div>
             <div flex>
                 <div class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -184,8 +204,9 @@
                     aliquip ex ea commodo consequat.</div>
             </div>
         </div>
-    </md-sidenav>
-</div><!-- #wrapepr -->
+    </md-sidenav><!-- #view-task -->
+
+</div><!-- #wrapper -->
 
 
 <!--[if lt IE 9]>

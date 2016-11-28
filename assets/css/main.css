@@ -162,7 +162,8 @@ body *, .md-button {
 
 body {
   overflow-x: hidden;
-  font-family: sf_ui_textregular; }
+  font-family: sf_ui_textregular;
+  font-size: 15px; }
 
 #sidenav {
   width: 342.5px;
@@ -170,7 +171,8 @@ body {
   padding: 0 30px;
   padding-top: 4px; }
   #sidenav .md-button:hover,
-  #sidenav .md-button:focus {
+  #sidenav .md-button:focus,
+  #sidenav .md-button.active {
     background-color: #6b6b99; }
   #sidenav md-list-item * {
     color: #ffffff; }
@@ -260,7 +262,9 @@ body {
     width: 621px; }
     #content .task-list h4 {
       color: #b3bbcb;
-      margin: 15px 8px 4px 8px; }
+      font-family: sf_ui_textsemibold;
+      font-size: 15px;
+      margin: 17px 8px 4px 8px; }
       #content .task-list h4 span {
         font-size: 12px; }
     #content .task-list md-list {
@@ -268,15 +272,51 @@ body {
       border-radius: 10px; }
       #content .task-list md-list md-list-item {
         height: 60px;
-        box-sizing: border-box; }
+        box-sizing: border-box;
+        padding: 0; }
+        #content .task-list md-list md-list-item:not(:last-child)::after {
+          content: ' ';
+          width: 500px;
+          height: 1px;
+          background: #eaeaea;
+          margin: 0 auto;
+          text-align: center;
+          display: block;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          left: 0; }
         #content .task-list md-list md-list-item .md-button {
           font-size: 15px;
           font-family: sf_ui_textsemibold;
-          color: #212121; }
+          color: #212121;
+          margin: 0;
+          padding: 0 16px; }
     #content .task-list md-radio-group {
-      height: 100%; }
+      height: 100%;
+      width: 85px; }
       #content .task-list md-radio-group md-radio-button {
         height: 100%; }
+        #content .task-list md-radio-group md-radio-button::after {
+          content: ' ';
+          background: #eaeaea;
+          height: 40px;
+          width: 1px;
+          position: absolute;
+          right: 0; }
+        #content .task-list md-radio-group md-radio-button .md-container {
+          left: 0;
+          right: 0;
+          margin: auto; }
+        #content .task-list md-radio-group md-radio-button .md-off {
+          border-color: #dbdbdb;
+          border-width: 3px; }
+
+md-menu-item .md-button md-icon {
+  color: #b3bbcb;
+  font-size: 25px;
+  height: auto;
+  width: auto; }
 
 #newProject {
   position: fixed;
@@ -294,18 +334,75 @@ body {
 .md-sidenav-right {
   width: 500px;
   max-width: 500px;
-  background: #292c33; }
+  background: #292c33;
+  overflow: hidden; }
   .md-sidenav-right * {
     color: #ffffff; }
   .md-sidenav-right h3 {
     font-size: 18px;
     font-family: sf_ui_textmedium;
-    font-weight: normal; }
+    font-weight: normal;
+    margin-bottom: 3px;
+    margin-top: 27px;
+    text-align: center; }
   .md-sidenav-right .right-col {
     width: 79px; }
+  .md-sidenav-right .close-btn {
+    position: absolute; }
+    .md-sidenav-right .close-btn .md-button {
+      padding: 12px 11px;
+      min-width: 0;
+      text-align: center;
+      margin: 0 auto;
+      width: 100%; }
+      .md-sidenav-right .close-btn .md-button md-icon {
+        font-size: 27px; }
+      .md-sidenav-right .close-btn .md-button span {
+        font-family: sf_ui_textsemibold;
+        font-size: 9px;
+        display: block;
+        margin-top: -16px; }
   .md-sidenav-right .md-input {
     border-color: #ffffff; }
   .md-sidenav-right .md-input-focused {
     color: #ffffff; }
+  .md-sidenav-right md-input-container {
+    width: 342px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 0; }
+    .md-sidenav-right md-input-container .md-errors-spacer {
+      min-height: 14px; }
+    .md-sidenav-right md-input-container:not(:first-child) {
+      margin-top: 0px; }
+    .md-sidenav-right md-input-container label {
+      padding-left: 4px !important; }
+    .md-sidenav-right md-input-container .md-input {
+      height: 34px; }
+    .md-sidenav-right md-input-container label, .md-sidenav-right md-input-container .md-input {
+      color: #ffffff; }
+    .md-sidenav-right md-input-container.md-input-has-value label {
+      color: #ffffff; }
+    .md-sidenav-right md-input-container.md-input-focused label {
+      color: #ffffff; }
+    .md-sidenav-right md-input-container.md-input-focused .md-input {
+      border-color: #ffffff;
+      border-width: 0 0 1px 0;
+      color: #ffffff; }
+  .md-sidenav-right .content {
+    font-family: sf_ui_textregular;
+    font-size: 12px;
+    margin-top: 26px;
+    line-height: 22px;
+    max-width: 350px; }
+  .md-sidenav-right .actions {
+    padding-left: 9px; }
+    .md-sidenav-right .actions .md-button {
+      width: auto;
+      min-width: 0;
+      margin: 0; }
+    .md-sidenav-right .actions md-icon {
+      color: #51555e;
+      font-size: 18px; }
 
 /*# sourceMappingURL=main.css.map */

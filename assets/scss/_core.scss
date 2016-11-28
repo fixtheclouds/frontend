@@ -4,6 +4,7 @@
 body {
   overflow-x: hidden;
   font-family: sf_ui_textregular;
+  font-size: 15px;
 
   * {
     @extend %normal-case;
@@ -17,7 +18,8 @@ body {
   padding-top: 4px;
 
   .md-button:hover,
-  .md-button:focus {
+  .md-button:focus,
+  .md-button.active {
     background-color: $purple;
   }
 
@@ -174,10 +176,16 @@ body {
 
     h4 {
       color: $blue-grey;
-      margin: 15px 8px 4px 8px;
+      font: {
+        family: sf_ui_textsemibold;
+        size: 15px;
+      }
+      margin: 17px 8px 4px 8px;
 
       span {
-        font-size: 12px;
+        font: {
+          size: 12px;
+        }
       }
     }
 
@@ -188,6 +196,21 @@ body {
       md-list-item {
         height: 60px;
         box-sizing: border-box;
+        padding: 0;
+
+        &:not(:last-child)::after {
+          content: ' ';
+          width: 500px;
+          height: 1px;
+          background: $white-grey;
+          margin: 0 auto;
+          text-align: center;
+          display: block;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          left: 0;
+        }
 
         .md-button {
           font: {
@@ -195,16 +218,49 @@ body {
             family: sf_ui_textsemibold;
           }
           color: $black;
+          margin: 0;
+          padding: 0 16px;
         }
       }
     }
 
     md-radio-group {
       height: 100%;
+      width: 85px;
 
       md-radio-button {
         height: 100%;
+        &::after {
+          content: ' ';
+          background: $white-grey;
+          height: 40px;
+          width: 1px;
+          position: absolute;
+          right: 0;
+        }
+
+        .md-container {
+          left: 0;
+          right: 0;
+          margin: auto;
+        }
+
+        .md-off {
+          border-color: $light-grey;
+          border-width: 3px;
+        }
       }
+    }
+  }
+}
+
+md-menu-item {
+  .md-button {
+    md-icon {
+      color: $blue-grey;
+      font-size: 25px;
+      height: auto;
+      width: auto;
     }
   }
 }
@@ -228,6 +284,7 @@ body {
   width: 500px;
   max-width: 500px;
   background: $dark;
+  overflow: hidden;
 
   * {
     color: $white;
@@ -239,10 +296,37 @@ body {
       family: sf_ui_textmedium;
       weight: normal;
     }
+    margin-bottom: 3px;
+    margin-top: 27px;
+    text-align: center;
   }
 
   .right-col {
     width: 79px;
+  }
+
+  .close-btn {
+    position: absolute;
+
+    .md-button {
+      padding: 12px 11px;
+      min-width: 0;
+      text-align: center;
+
+      margin: 0 auto;
+      width: 100%;
+
+      md-icon {
+        font-size: 27px;
+      }
+
+      span {
+        font-family: sf_ui_textsemibold;
+        font-size: 9px;
+        display: block;
+        margin-top: -16px;
+      }
+    }
   }
 
   .md-input {
@@ -251,6 +335,77 @@ body {
 
   .md-input-focused {
     color: $white;
+  }
+
+  md-input-container {
+    width: 342px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 0;
+
+    .md-errors-spacer {
+      min-height: 14px;
+    }
+
+    &:not(:first-child) {
+      margin-top: 0px;
+    }
+
+    label {
+      padding-left: 4px !important;
+    }
+
+    .md-input {
+      height: 34px;
+    }
+
+    label, .md-input {
+      color: $white;
+    }
+
+    &.md-input-has-value {
+      label {
+        color: $white;
+      }
+    }
+
+    &.md-input-focused {
+
+      label {
+        color: $white;
+      }
+
+      .md-input {
+        border-color: $white;
+        border-width: 0 0 1px 0;
+        color: $white;
+      }
+    }
+  }
+
+  .content {
+    font: {
+      family: sf_ui_textregular;
+      size: 12px;
+    }
+    margin-top: 26px;
+    line-height: 22px;
+    max-width: 350px;
+  }
+
+  .actions {
+    padding-left: 9px;
+    
+    .md-button {
+      width: auto;
+      min-width: 0;
+      margin: 0;
+    }
+
+    md-icon {
+      color: $dark-grey;
+      font-size: 18px;
+    }
   }
 }
 

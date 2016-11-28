@@ -93,7 +93,7 @@
                     id: 1
                 },
                 {
-                    name: 'Call in a barber shop',
+                    name: 'Call in barber shop',
                     dateName: 'Tomorrow',
                     projectId: 1,
                     id: 2
@@ -142,6 +142,17 @@
                 }
             ];
 
+            /**
+             * Remove task from task list and task panel
+             * @param {integer} taskId
+             */
+            $scope.completeTask = function (taskId) {
+                var index = _.findIndex($scope.tasks, {id: taskId});
+                $scope.tasks.splice(index, 1);
+                index = _.findIndex($scope.currentTaskList, {id: taskId});
+                $scope.currentTaskList.splice(index, 1);
+            };
+
             // tasks shown in list
             $scope.currentTaskList = {
 
@@ -158,14 +169,27 @@
                 $scope.taskCount[item.id] = _.size(_.where($scope.tasks, { projectId: item.id }));
             });
 
+            /**
+             * Filter tasks by project and show 'em inside panel
+             * @param {integer} projectId
+             */
             $scope.showTasksByProject = function (projectId) {
+                $scope.currentProject = projectId;
                 $scope.currentTaskList = _.where($scope.tasks, { projectId: projectId });
             };
 
+            /**
+             * Detect if panel contains any tasks
+             * @returns {boolean}
+             */
             $scope.hasTasks = function() {
                 return _.size($scope.currentTaskList) > 0;
             };
-            
+
+            /**
+             * Panel togglers
+             */
+
             $scope.toggleTaskPanel = function () {
                 $mdSidenav('tasks').toggle();
             };
@@ -182,7 +206,6 @@
             $scope.closeTask = function () {
                 $mdSidenav('view-task').close();
             };
-
 
             $scope.toggleSearchBar = function () {
                 $scope.searchBarIsOn = !$scope.searchBarIsOn;
