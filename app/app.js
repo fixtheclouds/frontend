@@ -56,31 +56,23 @@
                 $mdOpenMenu(ev);
             };
 
-            var countTasksByProject = function (projectId) {
-                return _.size(_.where($scope.tasks, { projectId: projectId }));
-            };
-
             //project list
             $scope.projects = [
                 {
                     id: 1,
-                    name: 'Private',
-                    count: 8
+                    name: 'Private'
                 },
                 {
                     id: 2,
-                    name: 'Decode',
-                    count: 25
+                    name: 'Decode'
                 },
                 {
                     id: 3,
-                    name: 'Family',
-                    count: 3
+                    name: 'Family'
                 },
                 {
                     id: 4,
-                    name: 'Cookie',
-                    count: 13
+                    name: 'Cookie'
                 }
             ];
 
@@ -195,6 +187,7 @@
             };
 
             $scope.toggleProjectPanel = function () {
+                $scope.currentProject = null;
                 $mdSidenav('projects').toggle();
             };
 
