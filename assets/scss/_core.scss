@@ -234,6 +234,10 @@ md-toolbar.header-toolbar {
       &:last-child {
         margin-bottom: 30px;
       }
+
+      .md-button {
+        padding: 0;
+      }
     }
 
     md-list {
