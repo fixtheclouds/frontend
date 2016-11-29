@@ -285,7 +285,7 @@ md-toolbar.header-toolbar {
     width: 621px; }
     #content .task-list .md-button:focus .md-off,
     #content .task-list .md-button:hover .md-off {
-      border-color: #ffffff; }
+      border-color: #6b6b99; }
     #content .task-list h4 {
       color: #b3bbcb;
       font-family: sf_ui_textsemibold;
@@ -296,7 +296,14 @@ md-toolbar.header-toolbar {
     #content .task-list .task:last-child {
       margin-bottom: 30px; }
     #content .task-list .task .md-button {
-      padding: 0; }
+      padding: 0;
+      border-radius: 10px; }
+      #content .task-list .task .md-button:hover {
+        background: transparent; }
+        #content .task-list .task .md-button:hover .name {
+          -webkit-transition: 0.5s linear color;
+          transition: 0.5s linear color;
+          color: #6b6b99; }
     #content .task-list md-list {
       padding: 0;
       border-radius: 10px; }
@@ -343,7 +350,9 @@ md-toolbar.header-toolbar {
           margin: auto; }
         #content .task-list md-radio-group md-radio-button .md-off {
           border-color: #dbdbdb;
-          border-width: 3px; }
+          border-width: 3px;
+          -webkit-transition: 0.5s linear border-color;
+          transition: 0.5s linear border-color; }
 
 md-menu-item .md-button md-icon {
   color: #b3bbcb;

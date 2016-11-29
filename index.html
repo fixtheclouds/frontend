@@ -58,7 +58,7 @@
                 <md-icon md-font-set="i8" md-font-icon="icons8-search"></md-icon>
             </md-button>
             <div flex class="searchbox">
-                <md-autocomplete md-items="[]" ng-show="searchBarIsOn" class="toggled-item">
+                <md-autocomplete md-items="[]" ng-show="searchBarIsOn" class="toggled-item" focus-on="searchBarIsOn" md-auto-focus="">
 
                 </md-autocomplete>
             </div>
@@ -111,8 +111,9 @@
             </div>
 
         </div>
-        <md-button  class="md-fab md-fab-bottom-right" id="newProject" ng-click="toggleTaskPanel()">
-            <md-icon md-font-set="i8" md-font-icon="icons8-plus"></md-icon>
+        <md-button  class="md-fab md-fab-bottom-right toggled-item" id="newProject" ng-show="currentProject" aria-label="Create a project"
+                    ng-click="toggleTaskPanel()">
+            <md-icon md-font-set="i8" md-font-icon="icons8-plus" class="toggled-item"></md-icon>
         </md-button>
     </md-content><!-- #content -->
     </div>
@@ -120,7 +121,7 @@
     <md-sidenav class="md-whiteframe-4dp md-sidenav-right" md-component-id="tasks">
         <div layout="row" class="header">
             <div class="close-btn">
-                <md-button ng-click="toggleTaskPanel()">
+                <md-button ng-click="toggleTaskPanel()" aria-label="Toggle task panel">
                     <md-icon md-font-set="i8" md-font-icon="icons8-delete-2"></md-icon>
                     <span>ESC</span>
                 </md-button>
@@ -154,7 +155,7 @@
     <md-sidenav class="md-whiteframe-4dp md-sidenav-right" md-component-id="projects">
         <div layout="row" class="header">
             <div class="close-btn">
-                <md-button ng-click="toggleProjectPanel()">
+                <md-button ng-click="toggleProjectPanel()" aria-label="Toggle project panel">
                     <md-icon md-font-set="i8" md-font-icon="icons8-delete-2"></md-icon>
                     <span>ESC</span>
                 </md-button>
@@ -175,7 +176,8 @@
                     </md-input-container>
                 </form>
             </div>
-            <button class="md-fab md-fab-bottom-right md-button" id="newProject" ng-click="toggleProjectPanel()">
+            <button class="md-fab md-fab-bottom-right md-button" id="newProject"  aria-label="Add project"
+                    ng-click="toggleProjectPanel()">
                 <md-icon md-font-set="i8" md-font-icon="icons8-checkmark"></md-icon>
             </button>
         </div>

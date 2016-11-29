@@ -270,5 +270,20 @@
                 }
             };
 
-        }]);
+        }])
+        .directive('focusOn',function($timeout) {
+            return {
+                restrict : 'A',
+                link : function($scope,$element,$attr) {
+                    $scope.$watch($attr.focusOn,function(_focusVal) {
+                        $timeout(function() {
+                            var $input = $element.find('input');
+                            console.log($input);
+                            _focusVal ? $input.focus() :
+                                $input.blur();
+                        }, 0);
+                    });
+                }
+            }
+        })
 })();

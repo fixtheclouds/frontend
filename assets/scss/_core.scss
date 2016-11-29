@@ -211,7 +211,7 @@ md-toolbar.header-toolbar {
     .md-button:focus,
     .md-button:hover {
       .md-off {
-        border-color: $white;
+        border-color: $purple;
       }
     }
 
@@ -237,6 +237,17 @@ md-toolbar.header-toolbar {
 
       .md-button {
         padding: 0;
+        border-radius: 10px;
+
+        &:hover {
+          background: transparent;
+
+          .name {
+            -webkit-transition:0.5s linear color;
+            transition:0.5s linear color;
+            color: $purple;
+          }
+        }
       }
     }
 
@@ -252,6 +263,7 @@ md-toolbar.header-toolbar {
         height: 60px;
         box-sizing: border-box;
         padding: 0;
+
 
         &:not(:last-child)::after {
           content: ' ';
@@ -304,6 +316,8 @@ md-toolbar.header-toolbar {
         .md-off {
           border-color: $light-grey;
           border-width: 3px;
+          -webkit-transition:0.5s linear border-color;
+          transition:0.5s linear border-color;
         }
       }
     }
