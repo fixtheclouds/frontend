@@ -270,6 +270,21 @@
                 }
             };
 
+            /**
+             * Explicitly hide search bar
+             */
+            window.onclick = function(e) {
+                var el = document.getElementById('searchbox'),
+                    btn = document.getElementById('search-btn');
+                console.log(btn);
+                if (el !== e.target && btn !== e.target && !btn.contains(e.target) && !el.contains(e.target)) {
+                    if ($scope.searchBarIsOn) {
+                        $scope.searchBarIsOn = false;
+                        $scope.$apply();
+                    }
+                }
+            };
+
         }])
         .directive('focusOn',function($timeout) {
             return {
@@ -278,12 +293,11 @@
                     $scope.$watch($attr.focusOn,function(_focusVal) {
                         $timeout(function() {
                             var $input = $element.find('input');
-                            console.log($input);
                             _focusVal ? $input.focus() :
                                 $input.blur();
                         }, 0);
                     });
                 }
             }
-        })
+        });
 })();

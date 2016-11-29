@@ -54,11 +54,11 @@
     <md-toolbar class="header-toolbar">
         <div class="md-toolbar-tools">
             <md-button  hide-gt-md ng-click="toggleMainSidenav()">Menu</md-button>
-            <md-button class="md-icon-button" ng-click="toggleSearchBar()">
+            <md-button class="md-icon-button" ng-click="toggleSearchBar()" id="search-btn">
                 <md-icon md-font-set="i8" md-font-icon="icons8-search"></md-icon>
             </md-button>
-            <div flex class="searchbox">
-                <md-autocomplete md-items="[]" ng-show="searchBarIsOn" class="toggled-item" focus-on="searchBarIsOn" md-auto-focus="">
+            <div flex class="searchbox" id="searchbox">
+                <md-autocomplete md-items="[]" ng-show="searchBarIsOn" class="toggled-item" focus-on="searchBarIsOn">
 
                 </md-autocomplete>
             </div>
