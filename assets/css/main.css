@@ -394,20 +394,21 @@ md-menu-item .md-button md-icon {
   .md-sidenav-right .right-col {
     width: 79px; }
   .md-sidenav-right .close-btn {
-    position: absolute; }
+    position: absolute;
+    top: 11px; }
     .md-sidenav-right .close-btn .md-button {
-      padding: 12px 11px;
       min-width: 0;
       text-align: center;
       margin: 0 auto;
       width: 100%; }
       .md-sidenav-right .close-btn .md-button md-icon {
         font-size: 27px; }
-      .md-sidenav-right .close-btn .md-button span {
-        font-family: sf_ui_textsemibold;
-        font-size: 9px;
-        display: block;
-        margin-top: -16px; }
+    .md-sidenav-right .close-btn span {
+      font-family: sf_ui_textsemibold;
+      font-size: 9px;
+      display: block;
+      margin-top: -8px;
+      padding: 0 15px; }
   .md-sidenav-right .md-input {
     border-color: #ffffff; }
   .md-sidenav-right .md-input-focused {

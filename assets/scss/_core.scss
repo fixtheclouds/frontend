@@ -386,9 +386,9 @@ md-menu-item {
 
   .close-btn {
     position: absolute;
+    top: 11px;
 
     .md-button {
-      padding: 12px 11px;
       min-width: 0;
       text-align: center;
 
@@ -399,12 +399,14 @@ md-menu-item {
         font-size: 27px;
       }
 
-      span {
-        font-family: sf_ui_textsemibold;
-        font-size: 9px;
-        display: block;
-        margin-top: -16px;
-      }
+    }
+
+    span {
+      font-family: sf_ui_textsemibold;
+      font-size: 9px;
+      display: block;
+      margin-top: -8px;
+      padding: 0 15px;
     }
   }
 
